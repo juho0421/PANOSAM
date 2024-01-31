@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HV-plane reconstruction from a single 360 image
 
 Code for our paper in CVPR 2021: **Indoor Panorama Planar 3D Reconstruction via Divide and Conquer** ([paper](https://openaccess.thecvf.com/content/CVPR2021/html/Sun_Indoor_Panorama_Planar_3D_Reconstruction_via_Divide_and_Conquer_CVPR_2021_paper.html), [video](https://www.youtube.com/watch?v=2uvP0V1oGRo))
@@ -39,3 +40,40 @@ To always visualize all the planes, add `--mesh_show_back_face`.
   year      = {2021},
 }
 ```
+=======
+# The first step to CCC_Journey
+
+
+## 초기 설정
+
+git config --global user.name "github 이름"
+
+git config --global user.email "github 이메일"
+
+git config --list
+
+
+## local 저장소에서
+
+git init
+
+git add . 
+
+git status
+
+git commit -m "커밋메시지"
+
+git remote add origin {github 주소}
+
+git remote -v 
+
+git push origin main
+
+
+
+## github에서
+
+git pull origin main
+
+코드를 local 저장소에서 수정 후 다시 github으로 전송함
+>>>>>>> 04c0e5e7d989deaccf57c49cc498c8eb8d6c5393
