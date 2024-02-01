@@ -33,4 +33,3 @@ git push origin main
 git pull origin main
 
 코드를 local 저장소에서 수정 후 다시 github으로 전송함
->>>>>>> 04c0e5e7d989deaccf57c49cc498c8eb8d6c5393
