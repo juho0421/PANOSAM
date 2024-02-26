@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4244bcef-37fd-42af-a18e-9e7a1fb9dd53" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PanoPlane360/vis_planes.py" beforeDir="false" afterPath="$PROJECT_DIR$/PanoPlane360/vis_planes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/execute_code.txt" beforeDir="false" afterPath="$PROJECT_DIR$/execute_code.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/PanoPlane360" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
