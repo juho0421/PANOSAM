@@ -129,8 +129,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-# image
-/image100/*
-/image100_Pano/*
-/image100_SAM_pano/*

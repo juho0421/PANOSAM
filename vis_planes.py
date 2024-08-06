@@ -1,7 +1,8 @@
+import os
 import open3d
 import argparse
 import numpy as np
-from imageio import imread
+from imageio.v2 import imread
 from utils import read_h_planes, read_v_planes
 import torch
 
@@ -15,6 +16,7 @@ if __name__ == '__main__':
     parser.add_argument('--v_planes', required=True)
     parser.add_argument('--mesh', action='store_true')
     parser.add_argument('--mesh_show_back_face', action='store_true')
+    parser.add_argument('--save_path', default='output.obj', help='Path to save the 3D model')
     args = parser.parse_args()
 
     # Read input
@@ -46,7 +48,7 @@ if __name__ == '__main__':
     pts_xyz = np.stack([xs, ys, zs], -1).reshape(-1, 3)
     pts_rgb = rgb.reshape(-1, 3) / 255
 
-    if args.mesh:
+    if args.mesh: # TriangleMesh
         pid = np.arange(len(pts_xyz)).reshape(H_, W)
         tri_cancididate = np.concatenate([
             np.stack([
@@ -75,13 +77,29 @@ if __name__ == '__main__':
         scene.vertices = open3d.utility.Vector3dVector(pts_xyz)
         scene.vertex_colors = open3d.utility.Vector3dVector(pts_rgb)
         scene.triangles = open3d.utility.Vector3iVector(faces)
-    else:
+
+        # 시각화된 3D 모델을 파일의 이름으로 저장
+        image_name = os.path.splitext(os.path.basename(args.img))[0]
+
+        if args.save_path:
+            save_path = os.path.join(args.save_path, image_name + '.gltf')
+            open3d.io.write_triangle_mesh(save_path, scene)
+
+
+    else: # PointCloud
         scene = open3d.geometry.PointCloud()
         scene.points = open3d.utility.Vector3dVector(pts_xyz)
         scene.colors = open3d.utility.Vector3dVector(pts_rgb)
 
-    open3d.visualization.draw_geometries([
-        scene,
-        open3d.geometry.TriangleMesh.create_coordinate_frame(size=0.3, origin=[0, 0, 0])
-    ], mesh_show_back_face=args.mesh_show_back_face)
+        # 시각화된 3D 모델을 이미지 파일의 이름으로 저장
+        image_name = os.path.splitext(os.path.basename(args.img))[0]
 
+        if args.save_path:
+            save_path = os.path.join(args.save_path, image_name + '_pc' + '.gltf')
+            open3d.io.write_point_cloud(save_path, scene)
+
+    # # visualization
+    # open3d.visualization.draw_geometries([
+    #     scene,
+    #     open3d.geometry.TriangleMesh.create_coordinate_frame(size=0.3, origin=[0, 0, 0])
+    # ], mesh_show_back_face=args.mesh_show_back_face)

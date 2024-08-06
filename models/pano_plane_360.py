@@ -70,8 +70,8 @@ class Net(nn.Module):
     def forward(self, x):
         p0, p1, p2, p3, p4, p5 = self.backbone(x)
         output_dict = {
-            'h_planar': self.pred_h_planar(p0),
-            'v_planar': self.pred_v_planar(p0),
+            'h_planar': self.pred_h_planar(p0), ##
+            'v_planar': self.pred_v_planar(p0), ##
             'h_embedding': self.pred_h_embd(p0),
             'v_embedding': self.pred_v_embd(p0),
         }

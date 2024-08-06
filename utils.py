@@ -1,8 +1,7 @@
-import os
 import importlib
 import Imath
 import OpenEXR
-from imageio import imread
+from imageio.v2 import imread
 from collections import OrderedDict
 
 import numpy as np
@@ -133,8 +132,13 @@ def load_trained_model(path):
     args_model = checkpoint['args_model']
 
     Model_module_path = '.'.join(args_model['model_setting']['model'].split('.')[:-1])
+    Model_module_path = 'PanoPlane360.' + Model_module_path # 경로 수정
     Model_name = args_model['model_setting']['model'].split('.')[-1]
     Model = getattr(importlib.import_module(Model_module_path), Model_name)
     net = Model(backbone_kwargs=args_model['backbone_kwargs'], **args_model['model_kwargs'])
     net.load_state_dict(checkpoint['state_dict'])
     return net, args_model
+
+# args_model  {'model_setting': {'model': 'models.pano_plane_360.Net'},
+#               'backbone_kwargs': {'backbone': 'resnet101', 'channel': 256, 'lr_pad': 1, 'add_u': 1},
+#               'model_kwargs': {'backbone_name': 'ResnetFPN', 'embd_dim': 2}}
